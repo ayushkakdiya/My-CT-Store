@@ -9,23 +9,24 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-//MARK: - OUTLET AND VARIABLES
+    //MARK: - OUTLET AND VARIABLES
     @IBOutlet weak var tableView: UITableView!
     var viewModel: HomeViewModel = HomeViewModel()
-    var arrTableViewCell = [LocationTableViewCell.identifier, CategoriesTableViewCell.identifier, BannerTableViewCell.identifier, DeliveryOptionTableViewCell.identifier,VendorTableViewCell.identifier]
     
-//MARK: - APP LIFE CYCLE
+    var arrTableViewCell = [LocationTableViewCell.identifier, CategoriesTableViewCell.identifier, BannerTableViewCell.identifier,DeliveryOptionTableViewCell.identifier,VendorTableViewCell.identifier]
+    
+    //MARK: - APP LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchResponse()
         registerCustemCell()
     }
     
-//MARK: - FUNCTIONS
+    //MARK: - FUNCTIONS
     private func registerCustemCell() {
         tableView.separatorStyle = .none
-        arrTableViewCell.forEach { cellName in
-            tableView.register(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
+        arrTableViewCell.forEach { cell in
+            tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
         }
     }
     
@@ -50,7 +51,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         return viewModel.numOfRowInsection()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
+        
         switch indexPath.section {
         case 0:
             let cell: LocationTableViewCell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier) as! LocationTableViewCell

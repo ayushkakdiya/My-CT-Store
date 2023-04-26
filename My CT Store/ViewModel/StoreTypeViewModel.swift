@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StoreTypeViewModel: Decodable {
+struct StoreTypeViewModel {
     private let storeType: StoreType
     
     init(storeType: StoreType) {

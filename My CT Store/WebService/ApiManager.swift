@@ -23,7 +23,7 @@ class ApiManager {
         AF.request(url, method: method, parameters: parameter, encoding: URLEncoding.default, headers: header).responseData { response in
             
             guard let statusCode = response.response?.statusCode,
-                  (200...200).contains(statusCode) else {
+                  (200...299).contains(statusCode) else {
                 
                 completion(.failure(.invalidResponse))
                 return
